@@ -29,10 +29,10 @@ export default function Application(props) {
   src="images/logo.png"
   alt="Interview Scheduler"
 />
-<DayList
-  days={days}
-  day={day}
-  setDay={setDay}
+<DayList 
+  days={days} 
+  value={day} 
+  onChange={setDay} 
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu"></nav>
