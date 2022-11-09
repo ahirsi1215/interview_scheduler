@@ -26,15 +26,15 @@ export function getInterview(state, interview) {
 }
 
 export function getInterviewersForDay(state, day) {
-  let allInterviewers = [];
-  const interviewerEle = state.days.find((element) => {
-    return element.name === day;
-  });
-  if (state.days.length === 0 || interviewerEle[0] === undefined) {
+  
+  const getDays = state.days.find(id => id.name === day);
+  if (!getDays) {
     return [];
   }
-  allInterviewers = interviewerEle.interviewers.map((element) => {
-    return state.interviewers[element];
-  });
-  return allInterviewers;
+  const total = [];
+  for (let a of getDays.interviewers) {
+    total.push(state.interviewers[a]);
+  }
+
+  return total;
 }
