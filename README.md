@@ -2,16 +2,18 @@
 A Project based on react which allows a user to schedule an interview on any weekday of their liking. Each user could edit their interviews and also delete their interviews.
 
 ## Interface
-(https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss1.png)
+![alt text](https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss1.png?raw=true)
 
 ## Edit your interview
-(https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss2.png)
+![alt text](https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss2.png?raw=true)
 
 ## Delete your interview
-(https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss3.png)
+![alt text](https://github.com/ahirsi1215/interview_scheduler/blob/master/img/ss3.png?raw=true)
+
 ## Setup
 
 Install dependencies with `npm install`.
+
 `npm start` to get the server running.
 
 ## Running Webpack Development Server
