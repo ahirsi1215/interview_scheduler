@@ -80,7 +80,7 @@ export default function Appointment(props) {
           onSave={save}
         />}
       {mode === ERROR_SAVE && 
-      <Error message="ERROR Appointment could not be saved try again!" 
+      <Error message="Error Appointment could not be saved try again!" 
       onClose={back} />}
       {mode === ERROR_DELETE && 
       <Error message="Error deleting try again!" 
