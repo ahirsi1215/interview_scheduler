@@ -28,4 +28,4 @@ export default function InterviewerList(props) {
   <ul className="interviewers__list">{interviewers}</ul>
 </section>
   )
-}
+};

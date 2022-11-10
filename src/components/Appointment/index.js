@@ -34,15 +34,15 @@ export default function Appointment(props) {
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
-  }
-  
+  };
+
   function deleteSlot() {
     transition(DELETING, true);
     props
-     .cancelInterview(props.id)
-     .then(() => transition(EMPTY))
-     .catch(error => transition(ERROR_DELETE, true));
-  }
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
+  };
 
   return (
     <article className="appointment" data-testid="appointment">
@@ -53,24 +53,24 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => transition(CONFIRM)}
-          onEdit={() => transition(EDIT)} 
-          />)}
-          
+          onEdit={() => transition(EDIT)}
+        />)}
+
       {mode === CREATE && (
-      <Form
-        interviewers={props.interviewers}
-        onCancel={back}
-        onSave = {save}
-         />)}
-      {mode === SAVING && <Status 
-      message={"Saving"} />}
-      {mode === DELETING && <Status 
-      message={"Deleting"} />}
-      {mode === CONFIRM && <Confirm
-          message="Are you sure you want to delete?"
+        <Form
+          interviewers={props.interviewers}
           onCancel={back}
-          onConfirm={deleteSlot}
-        />}
+          onSave={save}
+        />)}
+      {mode === SAVING && <Status
+        message={"Saving"} />}
+      {mode === DELETING && <Status
+        message={"Deleting"} />}
+      {mode === CONFIRM && <Confirm
+        message="Are you sure you want to delete?"
+        onCancel={back}
+        onConfirm={deleteSlot}
+      />}
       {mode === EDIT &&
         <Form
           name={props.interview.student}
@@ -79,12 +79,12 @@ export default function Appointment(props) {
           onCancel={back}
           onSave={save}
         />}
-      {mode === ERROR_SAVE && 
-      <Error message="Error Appointment could not be saved try again!" 
-      onClose={back} />}
-      {mode === ERROR_DELETE && 
-      <Error message="Error deleting try again!" 
-      onClose={back} />}
+      {mode === ERROR_SAVE &&
+        <Error message="Error Appointment could not be saved try again!"
+          onClose={back} />}
+      {mode === ERROR_DELETE &&
+        <Error message="Error deleting try again!"
+          onClose={back} />}
     </article>
   );
-}
+};
