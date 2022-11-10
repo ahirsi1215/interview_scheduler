@@ -25,10 +25,10 @@ describe("Form", () => {
   });
 
   it("renders with initial student name", () => {
-    const { getByTestId } = render(
-      <Form interviewers={interviewers} name="Lydia Miller-Jones" />
+    const { queryByTestId } = render(
+      <Form interviewers={interviewers} student="Lydia Miller-Jones" />
     );
-    expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
+    expect(queryByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
 
   it("validates that the student name is not blank", () => {

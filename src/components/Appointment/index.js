@@ -29,16 +29,14 @@ export default function Appointment(props) {
       student: name,
       interviewer
     };
-  
     transition(SAVING);
-  
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
   }
   
-  function deleteSlot(event) {
+  function deleteSlot() {
     transition(DELETING, true);
     props
      .cancelInterview(props.id)
@@ -47,7 +45,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
@@ -60,7 +58,6 @@ export default function Appointment(props) {
           
       {mode === CREATE && (
       <Form
-        id={props.id}
         interviewers={props.interviewers}
         onCancel={back}
         onSave = {save}
@@ -70,7 +67,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status 
       message={"Deleting"} />}
       {mode === CONFIRM && <Confirm
-          message="Delete Interview?"
+          message="Are you sure you want to delete?"
           onCancel={back}
           onConfirm={deleteSlot}
         />}
@@ -84,10 +81,10 @@ export default function Appointment(props) {
         />}
       {mode === ERROR_SAVE && 
       <Error message="ERROR Appointment could not be saved try again!" 
-      onClose={() => transition(SHOW)} />}
+      onClose={back} />}
       {mode === ERROR_DELETE && 
-      <Error message="ERROR Could not Cancel retry again!" 
-      onClose={() => transition(SHOW)} />}
+      <Error message="Error deleting try again!" 
+      onClose={back} />}
     </article>
   );
 }
